@@ -1,0 +1,33 @@
+{
+  "brand": {
+    "name": "Online Tabak Shop",
+    "logo_url": "",
+    "color": "#8a1c1c",
+    "shop_url": "https://onlinetabakshop.de",
+    "signature": "Ihr Team von Online Tabak Shop"
+  },
+  "legal": {
+    "warning": "Rauchen gefährdet Ihre Gesundheit.",
+    "impressum_html": "Firmenname GmbH · Musterstraße 1 · 12345 Musterstadt<br>Geschäftsführer: Max Mustermann · HRB 00000, Amtsgericht Musterstadt<br>USt-IdNr.: DE000000000 · E-Mail: info@onlinetabakshop.de",
+    "privacy_url": "https://onlinetabakshop.de/datenschutz"
+  },
+  "price_reference_label": "Niedrigster Preis der letzten 30 Tage",
+  "schedule": {
+    "timezone": "Europe/Berlin",
+    "weekday": 1,
+    "hour": 10
+  },
+  "files": {
+    "promotions": "data/aktionen.xlsx",
+    "subscribers": "data/subscribers.csv",
+    "unsubscribed": "data/abgemeldet.csv"
+  },
+  "subscribers": {
+    "require_label": "",
+    "b2b_label": "B2B"
+  },
+  "limits": {
+    "max_items": 20,
+    "highlights": 3
+  }
+}

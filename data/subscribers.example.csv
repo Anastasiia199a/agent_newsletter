@@ -1,0 +1,4 @@
+email,vorname,nachname,segment
+kunde1@example.com,Anna,Schmidt,B2C
+kunde2@example.com,,,B2C
+partner1@example.com,Jonas,Becker,B2B

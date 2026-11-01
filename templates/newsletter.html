@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<title>{{subject}}</title>
+<style>
+  @media (max-width: 620px) {
+    .container { width: 100% !important; }
+    .px { padding-left: 16px !important; padding-right: 16px !important; }
+    .card { display: block !important; width: 100% !important; box-sizing: border-box; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f2f2ef;font-family:Arial,Helvetica,sans-serif;color:#222;">
+<!-- Прехедер: виден в списке писем, скрыт в теле -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{preheader}}&#8199;&#65279;&#847;&#8199;&#65279;&#847;</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f2ef;">
+<tr><td align="center" style="padding:24px 8px;">
+<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" style="width:600px;background:#ffffff;border-radius:6px;overflow:hidden;">
+
+  <!-- Шапка -->
+  <tr><td class="px" style="background:{{brand.color}};padding:20px 32px;">
+    {{#if brand.logo_url}}
+      <img src="{{brand.logo_url}}" alt="{{brand.name}}" height="36" style="display:block;border:0;height:36px;">
+    {{else}}
+      <span style="font-size:20px;font-weight:bold;color:#ffffff;letter-spacing:.5px;">{{brand.name}}</span>
+    {{/if}}
+  </td></tr>
+  <tr><td class="px" style="padding:6px 32px;background:#2b2b2b;color:#cfcfcf;font-size:12px;">
+    Wochenangebote {{week_label}}{{#if is_b2b}} &middot; Für Handelspartner{{/if}}
+  </td></tr>
+
+  <!-- Вступление -->
+  <tr><td class="px" style="padding:28px 32px 8px;font-size:15px;line-height:1.55;">
+    <p style="margin:0 0 12px;">{{salutation}}</p>
+    <p style="margin:0;">{{intro}}</p>
+  </td></tr>
+
+  <!-- Highlights -->
+  {{#if highlights.length}}
+  <tr><td class="px" style="padding:20px 32px 4px;">
+    <h2 style="margin:0 0 12px;font-size:17px;color:#222;">Highlights der Woche</h2>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+      {{#each highlights}}
+        <td class="card" valign="top" width="33%" style="padding:6px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e3e3de;border-radius:6px;">
+            {{#if bild}}<tr><td align="center" style="padding:12px 12px 0;"><img src="{{bild}}" alt="{{produkt}}" width="140" style="display:block;max-width:100%;border:0;"></td></tr>{{/if}}
+            <tr><td style="padding:12px;font-size:13px;line-height:1.4;">
+              <div style="display:inline-block;background:{{../brand.color}};color:#fff;font-size:12px;font-weight:bold;padding:2px 8px;border-radius:3px;">&minus;{{rabatt_prozent}}&nbsp;%</div>
+              <div style="font-weight:bold;margin:8px 0 4px;font-size:14px;">{{produkt}}</div>
+              <div style="font-size:18px;font-weight:bold;color:{{../brand.color}};">{{neuer_preis_fmt}}</div>
+              <div style="font-size:11px;color:#777;">{{../price_reference_label}}: <s>{{alter_preis_fmt}}</s></div>
+              <div style="font-size:11px;color:#777;margin-top:4px;">Gültig bis {{gueltig_bis_fmt}}</div>
+            </td></tr>
+          </table>
+        </td>
+      {{/each}}
+      </tr>
+    </table>
+  </td></tr>
+  {{/if}}
+
+  <!-- Все акции -->
+  <tr><td class="px" style="padding:20px 32px 8px;">
+    <h2 style="margin:0 0 8px;font-size:17px;color:#222;">Alle Angebote</h2>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:13px;line-height:1.45;">
+    {{#each items}}
+      <tr><td style="padding:12px 0;border-top:1px solid #ececea;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+          <td valign="top" style="padding-right:12px;">
+            <div style="font-weight:bold;font-size:14px;">{{produkt}}{{#if marke}} <span style="font-weight:normal;color:#777;">&middot; {{marke}}</span>{{/if}}</div>
+            <div style="color:#444;margin:3px 0;">{{teaser}}</div>
+            <div style="color:#777;font-size:12px;">
+              Gültig bis {{gueltig_bis_fmt}}{{#if shop}} &middot; {{shop}}{{/if}}{{#if bedingungen}} &middot; {{bedingungen}}{{/if}}
+            </div>
+          </td>
+          <td valign="top" align="right" style="white-space:nowrap;">
+            <div style="font-size:16px;font-weight:bold;color:{{../brand.color}};">{{neuer_preis_fmt}}</div>
+            <div style="font-size:11px;color:#777;"><s>{{alter_preis_fmt}}</s> &middot; &minus;{{rabatt_prozent}}&nbsp;%</div>
+            {{#if link}}<a href="{{link}}" style="display:inline-block;margin-top:6px;font-size:12px;color:{{../brand.color}};font-weight:bold;text-decoration:none;">Zum Angebot &rsaquo;</a>{{/if}}
+          </td>
+        </tr></table>
+      </td></tr>
+    {{/each}}
+    </table>
+    <p style="font-size:11px;color:#777;margin:10px 0 0;">Durchgestrichene Preise: {{price_reference_label}}. Alle Preise inkl. MwSt.</p>
+  </td></tr>
+
+  <!-- CTA -->
+  <tr><td class="px" align="center" style="padding:20px 32px 8px;">
+    <a href="{{brand.shop_url}}" style="display:inline-block;background:{{brand.color}};color:#ffffff;font-size:15px;font-weight:bold;text-decoration:none;padding:12px 28px;border-radius:4px;">Zum Shop</a>
+  </td></tr>
+
+  <tr><td class="px" style="padding:16px 32px 28px;font-size:15px;line-height:1.55;">
+    <p style="margin:0 0 12px;">{{closing}}</p>
+    <p style="margin:0;">Mit freundlichen Grüßen<br>{{brand.signature}}</p>
+  </td></tr>
+
+  <!-- Обязательные блоки: 18+, Impressum, отписка -->
+  <tr><td class="px" style="padding:12px 32px;background:#fff6e5;font-size:12px;color:#6b5500;border-top:1px solid #f0e0b8;">
+    <strong>Abgabe nur an Personen ab 18 Jahren.</strong> {{legal.warning}}
+  </td></tr>
+  <tr><td class="px" style="padding:20px 32px;background:#f7f7f5;font-size:11px;line-height:1.5;color:#777;">
+    Sie erhalten diese E-Mail, weil Sie dem Empfang unseres Newsletters zugestimmt haben.
+    <a href="{{unsubscribe_url}}" style="color:#555;">Newsletter abbestellen</a><br><br>
+    <strong>Impressum</strong><br>{{{legal.impressum_html}}}<br>
+    <a href="{{legal.privacy_url}}" style="color:#555;">Datenschutzerklärung</a>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

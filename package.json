@@ -1,0 +1,20 @@
+{
+  "name": "newsletter-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Wöchentlicher Aktions-Newsletter: Excel → Claude → Freigabe → Versand",
+  "scripts": {
+    "draft": "node agent.mjs draft",
+    "approve": "node agent.mjs approve",
+    "send": "node agent.mjs send",
+    "status": "node agent.mjs status",
+    "sample-data": "node tools/make-sample-data.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.60.0",
+    "exceljs": "^4.4.0",
+    "handlebars": "^4.7.8",
+    "nodemailer": "^6.9.16"
+  }
+}
